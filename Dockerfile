@@ -3,14 +3,14 @@ FROM wmarinho/ubuntu:oracle-jdk-7
 
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
-ENV BONITA_VERSION 6.3.2
+ENV BONITA_VERSION 6.3.3
 
 RUN apt-get update \
 	&& apt-get install wget unzip git -y 
 
-RUN wget -nv http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-6.3.2-Tomcat-6.0.37.zip -O /tmp/BonitaBPMCommunity-6.3.2-Tomcat-6.0.37.zip
+RUN wget -nv http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -O /tmp/BonitaBPMCommunity-6.3.2-Tomcat-6.0.37.zip
 
-RUN unzip -q /tmp/BonitaBPMCommunity-6.3.2-Tomcat-6.0.37.zip -d /opt && mv /opt/Bonita* /opt/bos
+RUN unzip -q /tmp/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -d /opt && mv /opt/Bonita* /opt/bos
 
 RUN apt-get install postgresql-client-9.3 -y
 ADD scripts/setenv.sh /opt/bos/bin/
