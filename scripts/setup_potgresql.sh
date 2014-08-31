@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f "/opt/bos/.bonita_pgconfig" ]; then
+if [ -f "${BONITA_HOME}/.bonita_pgconfig" ]; then
   exit 0; 
 fi
 
@@ -40,11 +40,11 @@ if [ "$PGHOST" ]; then
       psql -U $PGUSER  -h $PGHOST -d $PGDATABASE --command "CREATE USER bonita WITH SUPERUSER PASSWORD 'bpm';"
       psql -U $PGUSER  -h $PGHOST -d $PGDATABASE --command "CREATE DATABASE bonita OWNER bonita;"
     fi
-     cp -r /opt/bos/config /opt/bos/config_tmp
-      sed -i "s/serverName=localhost/serverName=${PGHOST}/g" /opt/bos/config_tmp/postgresql/conf/bitronix-resources.properties
-      sed -i "s/localhost:5432/${PGHOST}:${PGPORT}/g" /opt/bos/config_tmp/postgresql/conf/Catalina/localhost/bonita.xml
-      cp -r /opt/bos/config_tmp/postgresql/* /opt/bos/
-      wget -nv http://jdbc.postgresql.org/download/postgresql-9.3-1102.jdbc3.jar -O /opt/bos/lib/postgresql-9.3-1102.jdbc3.jar
-      rm -rf /opt/bos/config_tmp
-     touch /opt/bos/.bonita_pgconfig
+     cp -r ${BONITA_HOME}/config ${BONITA_HOME}/config_tmp
+      sed -i "s/serverName=localhost/serverName=${PGHOST}/g" ${BONITA_HOME}/config_tmp/postgresql/conf/bitronix-resources.properties
+      sed -i "s/localhost:5432/${PGHOST}:${PGPORT}/g" ${BONITA_HOME}/config_tmp/postgresql/conf/Catalina/localhost/bonita.xml
+      cp -r ${BONITA_HOME}/config_tmp/postgresql/* ${BONITA_HOME}/
+      wget -nv http://jdbc.postgresql.org/download/postgresql-9.3-1102.jdbc3.jar -O ${BONITA_HOME}/lib/postgresql-9.3-1102.jdbc3.jar
+      rm -rf ${BONITA_HOME}/config_tmp
+     touch ${BONITA_HOME}/.bonita_pgconfig
 fi

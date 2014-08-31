@@ -4,22 +4,24 @@ FROM wmarinho/ubuntu:oracle-jdk-7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 ENV BONITA_VERSION 6.3.3
+ENV BONITA_HOME /opt/bos
 
 RUN apt-get update \
 	&& apt-get install wget unzip git -y 
 
-RUN wget -nv http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -O /tmp/BonitaBPMCommunity-6.3.2-Tomcat-6.0.37.zip
+RUN wget -nv http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -O /tmp/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip
 
-RUN unzip -q /tmp/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -d /opt && mv /opt/Bonita* /opt/bos
+RUN unzip -q /tmp/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -d /opt && mv /opt/Bonita* ${BONITA_HOME} 
 
-RUN apt-get install postgresql-client-9.3 -y
-ADD scripts/setenv.sh /opt/bos/bin/
-ADD scripts/setup_potgresql.sh /opt/bos/bin/
-ADD config /opt/bos/config/
+RUN apt-get install postgresql-client-9.3 npm -y && npm install less -g
+ADD config ${BONITA_HOME}/config/
+ADD scripts/setenv.sh ${BONITA_HOME}/bin/
+ADD scripts/run.sh /
+ADD scripts/setup_potgresql.sh ${BONITA_HOME}/bin/
 
-RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/bos/bin/startup.sh 
+RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' ${BONITA_HOME}/bin/startup.sh 
 
 EXPOSE 8080
 
 
-CMD ["/opt/bos/bin/startup.sh"]
+CMD ["./run.sh"]
