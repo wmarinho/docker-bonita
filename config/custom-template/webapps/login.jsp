@@ -82,7 +82,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>Globosat BPM Portal</title>
+<title>{{PortalTitle}}</title>
 <link rel="icon" type="image/png" href="images/favicon2.ico" />
 <!-- Load LESS CSS -->
 <script type="text/javascript" src="portal/scripts/includes/array.prototype.js"></script>
@@ -149,7 +149,7 @@
 		</div>
 	</div>
 	<div class="footer" id="footer">
-		Globosat Programadora Ltda. Todos os direitos reservados. All rights reserved ®
+		{{PortalFooter}}
 	</div>
 </body>
 </html>
