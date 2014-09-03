@@ -32,7 +32,7 @@ div#loading #loading-content {
 .bonita_form_entry {
 	clear: both;
 	margin-bottom: 5px;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 span.bonita_form_field{
 	margin-top: 8px;

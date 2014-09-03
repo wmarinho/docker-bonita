@@ -10,7 +10,7 @@ html,body {
 #footerpusher{min-height: 100%;}
 
 #main {
-    overflow: auto;
+   /* overflow: auto;*/
     padding-bottom: 35px; /* must be same height as the footer */
 }
 
