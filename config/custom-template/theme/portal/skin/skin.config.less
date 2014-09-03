@@ -5,15 +5,14 @@
 @height: @h;
 @w: 5px; // std width
 @width: @w;
-//@mainAccentColor: #b20706; //the main skin color (red)
+@mainAccentColor: #b20706; //the main skin color (red)
 //@mainAccentColor: #2674b0; //the main skin color (blue)
-@mainAccentColor: #024C68;
 @secondAccentColor: #313433;
 @color3: #666666; //calendar links, button3 text color
 @color4: #035;//link color
 
 @browserFontSize: 16;//default browser font size in px, don't change this value 
-@skinFontSize: 13; 
+@skinFontSize: 13;
 @calcFontSize: (@skinFontSize / @browserFontSize);
 
 @fontSize: ~"@{calcFontSize}em";
@@ -166,7 +165,7 @@
 @header-login-profileLink-bg: "arrow-down.png";
 @header-login-profileLink-margin: 0 2*@w;
 @header-menu-font: @skinFont;
-@header-menu-fontSize: 14;
+@header-menu-fontSize: 18;
 @header-menu-submenu-fontSize: 12;
 @header-menu-height: @header-menu-fontSize + @header-menu-link-paddingY * 2;
 @header-menu-margin: 0 0 0 @filtersPanel-width;
@@ -268,7 +267,7 @@
 @tablesPanel-tableActions-padding: 0 4*@w 0 0;
 
 @tablesPanel-tableActions-textAlign: right;
-@tablesPanel-table-thead-fontSize: 14;
+@tablesPanel-table-thead-fontSize: 16;
 @tablesPanel-table-thead-bgColor: lighten(@mainAccentColor, 8.5%);
 @tablesPanel-table-thead-height: 3*@h;
 @tablesPanel-table-thead-paddingTop: 3*@h;
@@ -1233,3 +1232,4 @@
 @connector-failure-popup-width: 65%;
 @stackTrace-height: 500px;
 @stackTrace-bg-color: #eae4e4;
+
