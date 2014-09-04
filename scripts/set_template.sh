@@ -10,7 +10,7 @@ fi
 
 CUSTOM_TEMPLATE="${BONITA_HOME}/config/custom-template"
 
-if [ -d "${CUSTOM_TEMPLATE}" ]; then
+if [ "${APPLY_TEMPLATE}" ]; then
 
 	if [ "${MAIN_COLOR}" ]; then
         	sed -i "s/@mainAccentColor: #b20706;/@mainAccentColor: #${MAIN_COLOR};/g" ${CUSTOM_TEMPLATE}/theme/portal/skin/skin.config.less

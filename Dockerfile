@@ -24,4 +24,4 @@ RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' ${BONITA_HOME}/bin/startup.sh
 EXPOSE 8080
 
 
-CMD ["${BONITA_HOME}/bin/run.sh"]
+CMD ["/opt/bos/bin/run.sh"]
