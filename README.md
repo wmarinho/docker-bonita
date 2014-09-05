@@ -26,4 +26,4 @@ docker pull wmarinho/bonita
 docker run  --name=bonita -d  -p 8080:8080  wmarinho/bonita
 </pre>
 
-http://<ip_address>:8080/bonita
+http://[ip_address]:8080/bonita
