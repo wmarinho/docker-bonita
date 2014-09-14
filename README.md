@@ -27,3 +27,30 @@ docker run  --name=bonita -d  -p 8080:8080  wmarinho/bonita
 </pre>
 
 http://[ip_address]:8080/bonita
+
+##Building your image
+
+###Clone and edit Dockerfile template
+
+<pre>
+sudo git clone https://github.com/wmarinho/docker-bonita.git
+cd docker-bonita
+sudo vi Dockerfile
+sudo docker build -t myimage/bonita:mytag .
+sudo docker images
+sudo docker run -p 8080:8080 -d myimage/bonita:mytag
+</pre>
+
+Or run in interactive mode
+
+<pre>
+sudo docker run -p 8080:8080 -i -t myimage/bonita:mytag /bin/bash
+</pre>
+
+Please see [Dockerfile Reference] (https://docs.docker.com/reference/builder/) for additional information.
+
+
+##Docker Hub account
+
+You can create a docker account and push your images. Please see [Working with Docker Hub](https://docs.docker.com/userguide/dockerrepos/)
+
