@@ -1,14 +1,14 @@
-#bonita:
-#  image: wmarinho/bonita:6.5
-#  ports:
-#    - "8080:8080"
-#  stdin_open: true
-#  tty: true
+bonita:
+  image: wmarinho/bonita:6.5
+  ports:
+    - "8080:8080"
+  stdin_open: true
+  tty: true
 
 bonitaportal:
   image: wmarinho/bonita:6.5-portal
-#  links:
-#    - bonita:bpm-portal
+  links:
+    - bonita:bpm-portal
   ports:
     - "80:80"
   stdin_open: true
