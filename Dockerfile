@@ -1,19 +1,20 @@
-FROM wmarinho/ubuntu:oracle-jdk-7
-
+FROM java:openjdk-8
 
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
-ENV BONITA_VERSION 6.3.3
+ENV BONITA_VERSION 6.5.0
+ENV TOMCAT_VERSION 7.0.55
+
 ENV BONITA_HOME /opt/bos
 
 RUN apt-get update \
 	&& apt-get install wget unzip git -y 
 
-RUN wget -nv http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -O /tmp/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip
+RUN wget -nv http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}.zip -O /tmp/bos.zip
 
-RUN unzip -q /tmp/BonitaBPMCommunity-${BONITA_VERSION}-Tomcat-6.0.37.zip -d /opt && mv /opt/Bonita* ${BONITA_HOME} 
+RUN unzip -q /tmp/bos.zip -d /opt && mv /opt/Bonita* ${BONITA_HOME} 
 
-RUN apt-get install postgresql-client-9.3 npm -y && npm install less -g
+RUN apt-get install postgresql-client-9.4 npm -y && npm install less -g
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 ADD config ${BONITA_HOME}/config/
 ADD scripts/setenv.sh ${BONITA_HOME}/bin/
