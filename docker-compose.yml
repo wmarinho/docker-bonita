@@ -1,7 +1,9 @@
 bonita:
   image: wmarinho/bonita:6.5
-  ports:
-    - "8080:8080"
+#  ports:
+#    - "8080:8080"
+  links:
+    - nodeaws:api
   stdin_open: true
   tty: true
 
@@ -9,7 +11,16 @@ bonitaportal:
   image: wmarinho/bonita:6.5-portal
   links:
     - bonita:bpm-portal
+    - nodeaws:api
   ports:
     - "80:80"
   stdin_open: true
   tty: true
+
+nodeaws:
+  image: wmarinho/node-aws
+ # ports:
+ #   - "3000:3000"
+  stdin_open: true
+  tty: true
+
