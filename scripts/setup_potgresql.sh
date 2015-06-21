@@ -44,7 +44,7 @@ if [ "$PGHOST" ]; then
       sed -i "s/serverName=localhost/serverName=${PGHOST}/g" ${BONITA_HOME}/config_tmp/postgresql/conf/bitronix-resources.properties
       sed -i "s/localhost:5432/${PGHOST}:${PGPORT}/g" ${BONITA_HOME}/config_tmp/postgresql/conf/Catalina/localhost/bonita.xml
       cp -r ${BONITA_HOME}/config_tmp/postgresql/* ${BONITA_HOME}/
-      wget -nv http://jdbc.postgresql.org/download/postgresql-9.3-1102.jdbc3.jar -O ${BONITA_HOME}/lib/postgresql-9.3-1102.jdbc3.jar
+      wget -nv https://jdbc.postgresql.org/download/postgresql-${PGSQL_BUILD}.jdbc4.jar -O ${BONITA_HOME}/lib/postgresql-${PGSQL_BUILD}.jdbc3.jar
       rm -rf ${BONITA_HOME}/config_tmp
      touch ${BONITA_HOME}/.bonita_pgconfig
 fi
